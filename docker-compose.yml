@@ -23,9 +23,19 @@ services:
     container_name: db-mysql
     volumes:
       - mysql-go-crud:/var/lib/mysql
-  
+  app:
+    container_name: "app-go"
+    build: 
+      dockerfile: Dockerfile
+      context: .
+      target: prod
+    depends_on:
+      - db-pg
+      - db-mysql
+    
 volumes:
   postgres-go-crud:
     external: false
   mysql-go-crud:
     external: false
+    

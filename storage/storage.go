@@ -36,7 +36,7 @@ func New(d Driver) {
 
 func newPGDB() {
 	// Singleton solo se va a ejeuctar una vez aun que se llame muchas veces
-	const dsn = "host=localhost user=postgres password=postgresPassword dbname=go-db port=5432 sslmode=disable"
+	const dsn = "host=db-pg user=postgres password=postgresPassword dbname=go-db port=5432 sslmode=disable"
 	once.Do(func() {
 		var err error
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
